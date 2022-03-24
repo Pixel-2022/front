@@ -20,7 +20,7 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F5FAFA"
+        android:background="#E6F5FAFA"
         app:itemIconTint="@drawable/button"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom" />
