@@ -14,14 +14,16 @@ public class FragmentPage1 extends Fragment {
     private LinearLayoutManager LinearLayoutManager;
     private View v;
 
-
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         v= inflater.inflate(R.layout.fragment1,container,false);
-
-
         return v;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
     }
 
 }
