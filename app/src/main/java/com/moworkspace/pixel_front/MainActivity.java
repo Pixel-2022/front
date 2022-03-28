@@ -10,7 +10,6 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView mBottomNV;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     String tag1, tag2, tag3;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
-
+        //페이지 옮기기
         if (fragment == null) {
             if (id == R.id.navigation_1) {
                 tag1=tag;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commitNow();
     }
 
-
+    //백스택 제거 작업
     private void clearBackStack() {
         final FragmentManager fragmentManager = getSupportFragmentManager();
         while (fragmentManager.getBackStackEntryCount() != 0) {
