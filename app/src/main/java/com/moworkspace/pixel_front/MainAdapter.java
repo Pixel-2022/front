@@ -4,15 +4,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     int[] images;
-
-    public MainAdapter(int[] images){
+    String[] headers;
+    public MainAdapter(int[] images, String[] headers){
         this.images = images;
+        this.headers = headers;
     }
 
     @NonNull
@@ -26,6 +28,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
         holder.imageView.setBackgroundResource(images[position]);
+
     }
 
     @Override
@@ -34,9 +37,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
+        TextView textView;
+
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
+            textView = itemView.findViewById(R.id.MenuHeader);
         }
     }
 }

@@ -17,8 +17,9 @@ public class FragmentPage2 extends Fragment {
     private androidx.recyclerview.widget.LinearLayoutManager LinearLayoutManager;
     private View v;
     //ViewPager 변수 선언
-    ViewPager2 vpVertical, vpHorizontal;
-    int[] images = {R.drawable.test1, R.drawable.test2,R.drawable.test3,R.drawable.test4};
+    ViewPager2 vpHorizontal;
+    String[] headers = {"끝말잇기","단어카드","단어사전"};
+    int[] images = {R.drawable.endtalk_icon, R.drawable.wordcard_icon,R.drawable.worddict_icon};
     MainAdapter adapter;
 
     @Override
@@ -29,7 +30,7 @@ public class FragmentPage2 extends Fragment {
         //ViewPager 관련 코드
         vpHorizontal = v.findViewById(R.id.vp_horizontal);
 
-        adapter = new MainAdapter(images);
+        adapter = new MainAdapter(images,headers);
 
         //Set clip padding
         vpHorizontal.setClipToPadding(false);
