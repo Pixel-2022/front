@@ -5,16 +5,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#E8D0A9"
+    android:layout_gravity="center">
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/MenuHeader"
         android:text="Header"
-        android:textSize="200px"/>
+        android:textSize="200px"
+        android:gravity="center"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/image_view">
+        android:id="@+id/image_view"
+        android:gravity="center">
     </ImageView>
 </LinearLayout>
