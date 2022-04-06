@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -77,6 +78,31 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
     }
+
+    public void toMain(){
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment currentFragment = fragmentManager.getPrimaryNavigationFragment();
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
+
+        Fragment fragment = fragmentManager.findFragmentByTag("Rmxakf");
+        if (fragment == null) {
+            fragment = new FragmentPage1();
+            fragmentTransaction.add(R.id.content_layout, fragment, "Rmxakf");
+        } else {
+            fragmentTransaction.show(fragment);
+        }
+
+        clearBackStack();
+        fragmentTransaction.setPrimaryNavigationFragment(fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
 
     //백스택 제거 작업
     private void clearBackStack() {

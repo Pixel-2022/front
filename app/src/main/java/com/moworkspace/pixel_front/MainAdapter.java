@@ -1,10 +1,12 @@
 package com.moworkspace.pixel_front;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     int[] images;
     String[] headers;
+    private Context context;
 
-    public MainAdapter(int[] images, String[] headers){
+    public MainAdapter(int[] images, String[] headers, Context context){
         this.images = images;
         this.headers = headers;
+        this.context = context;
     }
 
     @NonNull
@@ -44,6 +48,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
             textView = itemView.findViewById(R.id.MenuHeader);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    MainActivity main = (MainActivity) context;
+                    main.toMain();
+                }
+            });
 
         }
     }

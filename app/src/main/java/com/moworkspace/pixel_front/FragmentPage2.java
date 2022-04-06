@@ -38,7 +38,7 @@ public class FragmentPage2 extends Fragment {
         //ViewPager 관련 코드
         vpHorizontal = v.findViewById(R.id.vp_horizontal);
 
-        adapter = new MainAdapter(images,headers);
+        adapter = new MainAdapter(images,headers,getContext());
 
         //Set clip padding
         vpHorizontal.setClipToPadding(false);
