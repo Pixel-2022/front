@@ -16,6 +16,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     int[] images;
     String[] headers;
     private Context context;
+    int a;
 
     public MainAdapter(int[] images, String[] headers, Context context){
         this.images = images;
@@ -36,6 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
         holder.imageView.setBackgroundResource(images[position]);
         holder.textView.setText(headers[position]);
+
     }
 
     //카드 선택 시 이동
@@ -57,9 +59,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 @Override
                 public void onClick(View v){
                     MainActivity main = (MainActivity) context;
-                    main.toMain();
+                    int b= sendposition();
+                    main.toMain(b);
                 }
             });
         }
     }
+    public void setposition(int position){a=position;}
+    public int sendposition(){return a;}
 }

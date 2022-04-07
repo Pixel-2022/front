@@ -1,5 +1,6 @@
 package com.moworkspace.pixel_front;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import androidx.viewpager2.widget.ViewPager2;
 public class FragmentPage2 extends Fragment {
     private androidx.recyclerview.widget.LinearLayoutManager LinearLayoutManager;
     private View v;
+
+
     //ViewPager 변수 선언
     ViewPager2 vpHorizontal;
     String[] headers = {"끝말잇기","단어카드","단어사전"};
@@ -73,6 +76,7 @@ public class FragmentPage2 extends Fragment {
             @Override
             public void onPageSelected(int position){
                 mainBackView.setBackgroundResource(backImages[position]);
+                adapter.setposition(position);
             }
         });
 
