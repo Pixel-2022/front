@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragment = fragmentManager.findFragmentByTag("Rmxakf");
         if (fragment == null) {
-            fragment = new FragmentPage1();
+            fragment = new Fragment_EndTalk();
             fragmentTransaction.add(R.id.content_layout, fragment, "Rmxakf");
         } else {
             fragmentTransaction.show(fragment);

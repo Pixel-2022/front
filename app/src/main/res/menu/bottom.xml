@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_1"
         android:icon="@drawable/camera"
-        android:title="그룹" />
+        android:title="카메라" />
 
     <item
         android:id="@+id/navigation_2"

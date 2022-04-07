@@ -1,6 +1,7 @@
 package com.moworkspace.pixel_front;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_main,parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -36,6 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.textView.setText(headers[position]);
     }
 
+    //카드 선택 시 이동
     @Override
     public int getItemCount() {
         return images.length;
@@ -43,6 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textView;
+
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -56,7 +60,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                     main.toMain();
                 }
             });
-
         }
     }
 }
