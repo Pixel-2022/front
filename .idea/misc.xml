@@ -3,10 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Pixel/front/app/src/main/res/drawable/card_round.xml" value="0.38229166666666664" />
+        <entry key="..\:/Pixel/front/app/src/main/res/drawable/chat_round_robot.xml" value="0.16574074074074074" />
+        <entry key="..\:/Pixel/front/app/src/main/res/drawable/chat_round_user.xml" value="0.16574074074074074" />
+        <entry key="..\:/Pixel/front/app/src/main/res/drawable/dialog_d_no.xml" value="0.22135416666666666" />
+        <entry key="..\:/Pixel/front/app/src/main/res/drawable/edit_round.xml" value="0.16574074074074074" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/activity_main.xml" value="0.1276595744680851" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/chat_item_robot.xml" value="0.25" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/chat_item_user.xml" value="0.5" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/f2_endtalk.xml" value="0.25" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/forgot.xml" value="0.36614583333333334" />
         <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1.xml" value="0.290625" />
         <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1_hand.xml" value="0.290625" />
         <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1_stuff.xml" value="0.290625" />
         <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment2.xml" value="0.290625" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment3.xml" value="0.36614583333333334" />
+        <entry key="..\:/Pixel/front/app/src/main/res/layout/item_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Pixel/front/app/src/main/res/menu/bottom.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/forgot.xml" value="0.25" />
