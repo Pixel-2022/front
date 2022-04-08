@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Fragment_WorkCard extends Fragment {
+public class Fragment_WordCard extends Fragment {
     private View v;
 
     @Nullable
