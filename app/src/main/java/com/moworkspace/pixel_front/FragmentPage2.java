@@ -65,8 +65,6 @@ public class FragmentPage2 extends Fragment {
                 float v = 1 - Math.abs(position);
                 //Set scale y
                 page.setScaleY(0.8f + v * 0.2f);
-
-
             }
         });
         // Set page transform
