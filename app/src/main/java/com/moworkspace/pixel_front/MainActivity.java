@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toMain(int a){
-        Log.e("a","a"+ a);
         String tag0;
         String tag4="endtalk",tag5="workcard",tag6="worddict";
         if(a==0){tag0=tag4;}else if(a==1){tag0=tag5;}else{tag0=tag6;}
