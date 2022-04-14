@@ -1,5 +1,6 @@
 package com.moworkspace.pixel_front;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class FragmentPage2 extends Fragment {
     //Fragment 배경
     ImageView mainBackView;
 
+    Context ctx;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class FragmentPage2 extends Fragment {
         //ViewPager 관련 코드
         vpHorizontal = v.findViewById(R.id.vp_horizontal);
 
-        adapter = new MainAdapter(images,headers);
+        adapter = new MainAdapter(ctx,images,headers);
 
         //Set clip padding
         vpHorizontal.setClipToPadding(false);
