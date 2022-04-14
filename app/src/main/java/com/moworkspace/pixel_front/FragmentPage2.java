@@ -20,6 +20,8 @@ import androidx.viewpager2.widget.ViewPager2;
 public class FragmentPage2 extends Fragment {
     private androidx.recyclerview.widget.LinearLayoutManager LinearLayoutManager;
     private View v;
+
+
     //ViewPager 변수 선언
     ViewPager2 vpHorizontal;
     String[] headers = {"끝말잇기","단어카드","단어사전"};
@@ -29,7 +31,6 @@ public class FragmentPage2 extends Fragment {
     //Fragment 배경
     ImageView mainBackView;
 
-    Context ctx;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class FragmentPage2 extends Fragment {
         //ViewPager 관련 코드
         vpHorizontal = v.findViewById(R.id.vp_horizontal);
 
-        adapter = new MainAdapter(ctx,images,headers);
+        adapter = new MainAdapter(images,headers,getContext());
 
         //Set clip padding
         vpHorizontal.setClipToPadding(false);
@@ -64,8 +65,6 @@ public class FragmentPage2 extends Fragment {
                 float v = 1 - Math.abs(position);
                 //Set scale y
                 page.setScaleY(0.8f + v * 0.2f);
-
-
             }
         });
         // Set page transform
@@ -75,6 +74,7 @@ public class FragmentPage2 extends Fragment {
             @Override
             public void onPageSelected(int position){
                 mainBackView.setBackgroundResource(backImages[position]);
+                adapter.setposition(position);
             }
         });
 

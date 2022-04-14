@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     String tag1, tag2, tag3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,41 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
     }
+
+    public void toMain(int a){
+        String tag0;
+        String tag4="endtalk",tag5="workcard",tag6="worddict";
+        if(a==0){tag0=tag4;}else if(a==1){tag0=tag5;}else{tag0=tag6;}
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment currentFragment = fragmentManager.getPrimaryNavigationFragment();
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
+        Fragment fragment = fragmentManager.findFragmentByTag(tag0);
+        if (fragment == null) {
+            if (a == 2) {
+                fragment = new Fragment_WordDict();
+            }
+            else if(a==1){
+                fragment = new Fragment_WordCard();
+            }
+            else{
+                fragment = new Fragment_EndTalk();
+            }
+            fragmentTransaction.add(R.id.content_layout, fragment, tag0);
+        }
+        else {
+            fragmentTransaction.show(fragment);
+        }
+
+        clearBackStack();
+        fragmentTransaction.setPrimaryNavigationFragment(fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
 
     //백스택 제거 작업
     private void clearBackStack() {

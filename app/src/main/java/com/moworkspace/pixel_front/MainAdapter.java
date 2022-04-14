@@ -1,14 +1,13 @@
 package com.moworkspace.pixel_front;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     int[] images;
     String[] headers;
-    Context ctx;
+    private Context context;
+    int a;
 
-    public MainAdapter(Context ctx,int[] images, String[] headers){
-        this.ctx = ctx;
+    public MainAdapter(int[] images, String[] headers, Context context){
         this.images = images;
         this.headers = headers;
+        this.context = context;
     }
 
     @NonNull
@@ -29,6 +29,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_main,parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -37,16 +38,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.imageView.setBackgroundResource(images[position]);
         holder.textView.setText(headers[position]);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("눌렸어용");
-                Intent intent=new Intent(view.getContext(), FragmentPage1.class);
-                view.getContext().startActivity(intent);
-            }
-        });
     }
 
+    //카드 선택 시 이동
     @Override
     public int getItemCount() {
         return images.length;
@@ -55,13 +49,22 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         ImageView imageView;
         TextView textView;
 
+
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
             textView = itemView.findViewById(R.id.MenuHeader);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    MainActivity main = (MainActivity) context;
+                    int b= sendposition();
+                    main.toMain(b);
+                }
+            });
         }
     }
-
-    //클릭하면 해당 페이지로 이동을 할거야
-
+    public void setposition(int position){a=position;}
+    public int sendposition(){return a;}
 }
