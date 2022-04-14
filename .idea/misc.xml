@@ -3,29 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/card_round.xml" value="0.38229166666666664" />
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/chat_round_robot.xml" value="0.16574074074074074" />
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/chat_round_user.xml" value="0.16574074074074074" />
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/dialog_d_no.xml" value="0.22135416666666666" />
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/edit_round.xml" value="0.16574074074074074" />
-        <entry key="..\:/Pixel/front/app/src/main/res/drawable/round_white.xml" value="0.38229166666666664" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/activity_main.xml" value="0.1276595744680851" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/chat_item_robot.xml" value="0.25" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/chat_item_user.xml" value="0.5" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/f2_endtalk.xml" value="0.25" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/f2_wordcard.xml" value="0.18" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/f2_workcard.xml" value="0.36614583333333334" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/forgot.xml" value="0.36614583333333334" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1.xml" value="0.290625" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1_hand.xml" value="0.290625" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment1_stuff.xml" value="0.290625" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment2.xml" value="0.290625" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/fragment3.xml" value="0.36614583333333334" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/item_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/wordcard_item.xml" value="0.33" />
-        <entry key="..\:/Pixel/front/app/src/main/res/menu/bottom.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/endtalk_page.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/f2_wordcard.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/forgot.xml" value="0.25" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/fragment1.xml" value="0.20555555555555555" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/fragment2.xml" value="0.20555555555555555" />
@@ -34,6 +14,7 @@
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/item_main.xml" value="0.2341485507246377" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/joinin.xml" value="0.25" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/login.xml" value="0.33" />
+        <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/wordcard_item.xml" value="0.33" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/wordcard_page.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/worddict_page.xml" value="0.13645833333333332" />
       </map>
