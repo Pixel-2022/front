@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent" android:orientation="vertical"
     android:background="#6D929B">
-    <View
-        android:id="@+id/userCamera"
+    <com.moworkspace.pixel_front.CameraSurfaceView
+        android:layout_gravity="center"
+        android:id="@+id/surfacaview2"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:background="@color/black"
         android:layout_weight="1"
         android:layout_marginBottom="10dp"/>
     <LinearLayout
