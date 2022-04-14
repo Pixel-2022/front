@@ -38,11 +38,11 @@ public class Fragment1Hand extends Fragment {
         if(permisionCheck!= PackageManager.PERMISSION_GRANTED){
             Toast.makeText(ct,"권한 승인이 필요합니다.", Toast.LENGTH_LONG).show();
             if(ActivityCompat.shouldShowRequestPermissionRationale((Activity) ct,Manifest.permission.CAMERA)){
-                Toast.makeText(ct,"000부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(ct,"수화부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
             }else{
                 ActivityCompat.requestPermissions((Activity) ct,
                         new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-                Toast.makeText(ct,"000부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(ct,"해당부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
             }
         }
         return v;
