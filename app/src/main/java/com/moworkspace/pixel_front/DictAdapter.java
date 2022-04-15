@@ -1,5 +1,6 @@
 package com.moworkspace.pixel_front;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
+
 public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
     int[] images;
     private Context context;
+    private Dialog dialog;
 
     private ArrayList<Dict> dict;
     public DictAdapter(ArrayList<Dict> dict){
@@ -45,12 +48,21 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView textView;
         ImageView imageView;
+        ImageView save;
 
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             imageView = itemView.findViewById(R.id.dict_image);
             textView = itemView.findViewById(R.id.dict_name);
+            save=itemView.findViewById(R.id.save_word);
+
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
 
             //카드 선택 시 이동
@@ -63,4 +75,5 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
             });
         }
     }
+
 }
