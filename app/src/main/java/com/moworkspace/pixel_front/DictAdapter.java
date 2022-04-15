@@ -1,5 +1,6 @@
 package com.moworkspace.pixel_front;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,12 +14,15 @@ import java.util.ArrayList;
 
 
 public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
+    private LayoutInflater inflater;
+
     int[] images;
     private Context context;
     private Dialog dialog;
 
     private ArrayList<Dict> dict;
-    public DictAdapter(ArrayList<Dict> dict){
+    public DictAdapter(Context context, ArrayList<Dict> dict){
+        this.inflater = LayoutInflater.from(context);
         this.dict=dict;
     }
 
@@ -60,7 +64,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    custom_dialog(view);
                 }
             });
 
@@ -76,4 +80,21 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
         }
     }
 
+    public void custom_dialog(View v){
+        View dialogView = inflater.inflate(R.layout.dialog_wordadd,null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
+        ok_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                alertDialog.dismiss();
+            }
+        });
+    }
 }
