@@ -36,7 +36,7 @@ public class Fragment_WordCard extends Fragment {
         mLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(mLayoutManager);
 
-        adapter = new WordCardAdapter(dataList);
+        adapter = new WordCardAdapter(context,dataList);
 
         dataList.add(new Data(titles[0],videos[0],images[0]));
         dataList.add(new Data(titles[1],videos[1],images[1]));

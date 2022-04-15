@@ -32,6 +32,7 @@
         >
 
         <TextView
+            android:id="@+id/cancel_btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
@@ -44,6 +45,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/ok_btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"

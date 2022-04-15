@@ -1,5 +1,8 @@
 package com.moworkspace.pixel_front;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +21,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemViewHolder> {
-
+    private LayoutInflater inflater;
     //adapter에 들어갈 list
     private ArrayList<Data> listData = new ArrayList<>();
     String[] titles;
@@ -29,7 +32,8 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
     //직전에 클릭했던 item의 position
     private int prePosition = -1;
     private ArrayList<Data> data;
-    public WordCardAdapter(ArrayList<Data> data){
+    public WordCardAdapter(Context context, ArrayList<Data> data){
+        this.inflater = LayoutInflater.from(context);
         this.data = data;
     }
 
@@ -65,7 +69,7 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
         private LinearLayout expanded;
 //        private ImageButton wordStarBtn;
 //        private ImageButton wordFilmBtn;
-//        private ImageButton wordDeleteBtn;
+        private ImageButton wordDeleteBtn;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +77,9 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
             wordTitle = itemView.findViewById(R.id.wordTitle);
             wordImage = itemView.findViewById(R.id.wordImage);
             expanded = itemView.findViewById(R.id.expandedLayout);
+
+            wordDeleteBtn = itemView.findViewById(R.id.wordDeleteBtn);
+
             mView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -86,6 +93,13 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
 
                 }
             });
+
+            wordDeleteBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    custom_dialog(v);
+                }
+            });
         }
 
 //        void onBind(Data data){
@@ -95,4 +109,29 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
 //        }
 
     }
+    public void custom_dialog(View v){
+        View dialogView = inflater.inflate(R.layout.dialog_delete,null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
+        ok_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                alertDialog.dismiss();
+            }
+        });
+        TextView cancel_btn = dialogView.findViewById(R.id.cancel_btn);
+        cancel_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                alertDialog.dismiss();
+            }
+        });
+    }
 }
+
