@@ -1,5 +1,6 @@
 package com.moworkspace.pixel_front;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +32,8 @@ public class Fragment_WordDict extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         v= inflater.inflate(R.layout.f2_worddict,container,false);
-
-        DictAdapter adapter=new DictAdapter(dataList);
+        Context context = v.getContext();
+        DictAdapter adapter=new DictAdapter(context, dataList);
 
         // 리사이클
         recyclerView = v.findViewById(R.id.recyclerView1);
