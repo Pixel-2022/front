@@ -3,6 +3,8 @@ package com.moworkspace.pixel_front;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,6 +119,7 @@ public class WordCardAdapter extends RecyclerView.Adapter<WordCardAdapter.ItemVi
 
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener(){

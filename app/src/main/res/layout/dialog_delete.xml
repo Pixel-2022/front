@@ -27,19 +27,20 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="79dp"
         android:background="@drawable/dialog_delete_round2"
+        android:orientation="horizontal"
+        android:gravity="center"
         >
 
         <TextView
             android:id="@+id/cancel_btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="10dp"
             android:background="@drawable/dialog_d_no"
+            android:layout_gravity="center|left"
             android:gravity="center"
+            android:layout_marginRight="10dp"
             android:textSize="20dp"
             android:text="아니오"
             android:textStyle="bold" />
@@ -48,14 +49,12 @@
             android:id="@+id/ok_btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
+            android:layout_gravity="center|right"
             android:background="@drawable/dialog_d_yes"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="네"
             android:textSize="20dp"
-            android:textColor="#ffffff"
             android:textStyle="bold" />
 
     </LinearLayout>

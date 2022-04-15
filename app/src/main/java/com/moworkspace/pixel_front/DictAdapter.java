@@ -3,6 +3,8 @@ package com.moworkspace.pixel_front;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +90,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
 
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener(){
