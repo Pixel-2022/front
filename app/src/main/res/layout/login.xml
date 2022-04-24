@@ -42,13 +42,13 @@
                 android:layout_marginRight="10px"
                 android:src="@drawable/login_image1_2"/>
             <EditText
-                android:id="@+id/logid"
+                android:id="@+id/logEmail"
                 android:layout_gravity="center"
                 android:layout_width="700px"
                 android:layout_height="100px"
                 android:background="@drawable/edit_round"
                 android:textColor="#6D929B"
-                android:hint=" 아이디"
+                android:hint=" 이메일"
                 />
 
         </LinearLayout>
