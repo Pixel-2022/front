@@ -38,7 +38,7 @@ public class JoinActivity extends AppCompatActivity {
     private EditText pass;
     private EditText passCheck;
     private Button emailAuthentication;
-    public String EmailCode;
+    public String EmailCode = " ";
 
     private Button signupBtn;
     TextView emailName;
@@ -185,7 +185,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
-    public String checkEmail_dialog(View v){
+    public void checkEmail_dialog(View v){
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_checkemail,null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
@@ -198,14 +198,14 @@ public class JoinActivity extends AppCompatActivity {
         TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
         EditText a = (EditText)dialogView.findViewById(R.id.userEmailCode);
 
-        EmailCode = (String)a.getText().toString();
         ok_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                EmailCode = (String)a.getText().toString();
+//                Log.d("tag",EmailCode);
                 alertDialog.dismiss();
             }
         });
-        return a.getText().toString();
     }
     //키보드 내리기
     @Override
