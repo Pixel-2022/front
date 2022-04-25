@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.conscrypt.Conscrypt;
+
+import java.security.Security;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -25,7 +28,7 @@ public class LoginActivity extends AppCompatActivity{
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
-    private String BASE_URL = "http://192.168.35.105:3000";
+    private String BASE_URL = "http://192.168.0.5:3001";
 
     //id로 연결해 줄 것들
     private EditText logEmail;
@@ -40,6 +43,7 @@ public class LoginActivity extends AppCompatActivity{
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Security.insertProviderAt(Conscrypt.newProvider(), 1);
         setContentView(R.layout.login);
 
         logEmail=findViewById(R.id.logEmail);
@@ -63,7 +67,7 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intent= new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 //로그인 핸들러 호출
-                
+                handleLogin();
             }
         });
         //비밀번호 찾기
@@ -93,20 +97,21 @@ public class LoginActivity extends AppCompatActivity{
         HashMap<String, String> map = new HashMap<>();
 
         map.put("email",logEmail.getText().toString());
-        map.put("password",logEmail.getText().toString());
+        map.put("password",logpass.getText().toString());
 
         Call<LoginResult> call = retrofitInterface.executeLogin(map);
 
         call.enqueue(new Callback<LoginResult>(){
             @Override
             public void onResponse(Call<LoginResult> call, Response<LoginResult> response){
-                if(response.code() == 200){
+                if(response.code() == 201){
                     LoginResult result = response.body();
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
 
                     intent_email = result.getEmail();
                     intent_password = result.getPassword();
+                    
 
 //                    String[] notsplitname = result.getName().split("_");
 //                    intent_name = notsplitname[0];
