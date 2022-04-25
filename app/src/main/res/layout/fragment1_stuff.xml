@@ -2,11 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Button
+        android:id="@+id/stuff_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="7dp"
+        android:backgroundTint="#F5FAFA"
+        android:text="이미지 업로드"
+        android:textColor="#6D929B"
+        android:textSize="15dp" />
     <View
         android:id="@+id/stuff_frame"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:background="#C6DAD6"/>
     <LinearLayout
         android:layout_width="match_parent"
