@@ -1,11 +1,13 @@
 package com.moworkspace.pixel_front;
 
 public class LoginResult {
-    String nickname;
+    String name;
     String email;
     String password;
+    int UserID;
 
-    public String getNickname() {return nickname;}
+    public String getName() {return name;}
     public String getEmail() {return  email;}
     public String getPassword() {return password;}
+    public int getUserID(){return UserID;}
 }

@@ -1,8 +1,11 @@
 package com.moworkspace.pixel_front;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,9 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.conscrypt.Conscrypt;
-
-import java.security.Security;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -28,7 +28,8 @@ public class LoginActivity extends AppCompatActivity{
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
-    private String BASE_URL = "http://192.168.0.5:3001";
+    //신나:private String BASE_URL = "http://192.168.199.1:3001";
+    private String BASE_URL = "http://192.168.199.1:3001";
 
     //id로 연결해 줄 것들
     private EditText logEmail;
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompatActivity{
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Security.insertProviderAt(Conscrypt.newProvider(), 1);
         setContentView(R.layout.login);
 
         logEmail=findViewById(R.id.logEmail);
@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity{
                 startActivity(intent);
                 //로그인 핸들러 호출
                 handleLogin();
+                
             }
         });
         //비밀번호 찾기
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity{
         HashMap<String, String> map = new HashMap<>();
 
         map.put("email",logEmail.getText().toString());
-        map.put("password",logpass.getText().toString());
+        map.put("password",logEmail.getText().toString());
 
         Call<LoginResult> call = retrofitInterface.executeLogin(map);
 
@@ -131,5 +132,22 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
         
+    }
+    //키보드 내리기
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        hideKeyboard();
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

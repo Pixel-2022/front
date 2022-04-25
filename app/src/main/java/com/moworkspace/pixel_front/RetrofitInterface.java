@@ -13,11 +13,10 @@ public interface RetrofitInterface {
     @POST("/user/login")
     Call<LoginResult> executeLogin(@Body HashMap<String, String> map);
 
-    @POST("user/singup")
+    @POST("/user/singup")
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 
-
-    @POST("/check") //이메일 보내기 (인증번호용)
+    @POST("/user/check") //이메일 보내기 (인증번호용)
     Call<CheckResult> executeCheck (@Body HashMap<String, String> map);
 
 }
