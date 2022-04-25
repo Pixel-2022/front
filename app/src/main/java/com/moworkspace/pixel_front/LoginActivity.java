@@ -29,7 +29,8 @@ public class LoginActivity extends AppCompatActivity{
     private RetrofitInterface retrofitInterface;
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
     //신나:private String BASE_URL = "http://192.168.199.1:3001";
-    private String BASE_URL = "http://192.168.199.1:3001";
+    //무지:private String BASE_URL = "http://192.168.0.5:3001";
+    private String BASE_URL = "http://192.168.0.5:3001";
 
     //id로 연결해 줄 것들
     private EditText logEmail;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity{
     private String intent_email;
     private String intent_password;
     private String intent_name;
+    private int intent_userid;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,7 @@ public class LoginActivity extends AppCompatActivity{
         HashMap<String, String> map = new HashMap<>();
 
         map.put("email",logEmail.getText().toString());
-        map.put("password",logEmail.getText().toString());
+        map.put("password",logpass.getText().toString());
 
         Call<LoginResult> call = retrofitInterface.executeLogin(map);
 
@@ -112,12 +114,17 @@ public class LoginActivity extends AppCompatActivity{
 
                     intent_email = result.getEmail();
                     intent_password = result.getPassword();
+                    intent_userid = result.getUserID();
+                    intent_name = result.getName();
 
 //                    String[] notsplitname = result.getName().split("_");
 //                    intent_name = notsplitname[0];
 
 //                    builder1.setTitle(intent_name);
                     builder1.setMessage(intent_email);
+                    builder1.setMessage(intent_password);
+                    builder1.setMessage(intent_userid);
+                    builder1.setMessage(intent_name);
                     builder1.show();
 
                 }
