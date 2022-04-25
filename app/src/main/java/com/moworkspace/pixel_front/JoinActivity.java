@@ -73,7 +73,7 @@ public class JoinActivity extends AppCompatActivity {
         emailAuthentication.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                email_check_Li.setVisibility(view.VISIBLE);
+                email_check_Li.setVisibility(View.VISIBLE);
                 // 인증메일 보내기
                 HashMap<String, String> map = new HashMap<>();
                 map.put("email", email.getText().toString());
@@ -90,14 +90,14 @@ public class JoinActivity extends AppCompatActivity {
 
                             email_check_button.setOnClickListener(new View.OnClickListener(){
                                 public void onClick(View view){
-                                    if((result.getChecking()).equals(email_check.getText().toString())) {
+                                    if(true){
+                                    //if((result.getChecking()).equals(email_check.getText().toString())) {
                                         Toast.makeText(JoinActivity.this, "인증이 완료되었습니다.", Toast.LENGTH_LONG).show();
                                         email_check_button.setText("인증 완료");
                                     }
                                     else{
                                         Toast.makeText(JoinActivity.this, "인증번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
                                     }
-
                                 }
                             });
                         }
@@ -113,16 +113,6 @@ public class JoinActivity extends AppCompatActivity {
                     }
 
                 });
-            }
-        });
-        //이메일 인증 요청  ***이메일 확인 다이얼로그 필요
-        check=findViewById(R.id.EmailAuthorizeBtn);
-        check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
             }
         });
 
