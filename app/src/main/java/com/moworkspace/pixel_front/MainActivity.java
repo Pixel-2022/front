@@ -17,6 +17,10 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.conscrypt.Conscrypt;
+
+import java.security.Security;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNV;
     FragmentManager fragmentManager;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Security.insertProviderAt(Conscrypt.newProvider(), 1);
         setContentView(R.layout.activity_main);
 
         Intent intent= getIntent();

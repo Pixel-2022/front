@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class Fragment1Hand extends Fragment {
@@ -37,13 +38,14 @@ public class Fragment1Hand extends Fragment {
         int permisionCheck= ContextCompat.checkSelfPermission(ct, Manifest.permission.CAMERA);
         if(permisionCheck!= PackageManager.PERMISSION_GRANTED){
             Toast.makeText(ct,"권한 승인이 필요합니다.", Toast.LENGTH_LONG).show();
-            if(ActivityCompat.shouldShowRequestPermissionRationale((Activity) ct,Manifest.permission.CAMERA)){
+            if(ActivityCompat.shouldShowRequestPermissionRationale((Activity) ct,Manifest.permission.CAMERA)){//승인완료!
                 Toast.makeText(ct,"수화부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
-            }else{
+            }else{//승인이 안되었어!
                 ActivityCompat.requestPermissions((Activity) ct,
                         new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                 Toast.makeText(ct,"해당부분 사용을 위해 카메라 권한이 필요합니다.", Toast.LENGTH_LONG).show();
             }
+
         }
         return v;
     }
