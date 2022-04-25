@@ -31,7 +31,7 @@ public class JoinActivity extends AppCompatActivity {
     private String BASE_URL="aa";
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private EditText nickname;
+    private EditText name;
     private EditText email;
     private Button check;
     private EditText pass;
@@ -52,7 +52,7 @@ public class JoinActivity extends AppCompatActivity {
                 .build();
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
-        nickname=findViewById(R.id.nickname);
+        name=findViewById(R.id.name);
         email=findViewById(R.id.email);
 
         pass=findViewById(R.id.pwd);
@@ -118,7 +118,7 @@ public class JoinActivity extends AppCompatActivity {
                 }
                 else{
                     HashMap<String, String> map = new HashMap<>();
-                    map.put("nickname", nickname.getText().toString());
+                    map.put("name", name.getText().toString());
                     map.put("email", email.getText().toString());
                     String part[] = email.getText().toString().split("@");
                     map.put("password", pass.getText().toString());
