@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
@@ -30,7 +29,7 @@ public class LoginActivity extends AppCompatActivity{
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
     //신나:private String BASE_URL = "http://192.168.199.1:3001";
     //무지:private String BASE_URL = "http://192.168.0.5:3001";
-    private String BASE_URL = "http://192.168.0.5:3001";
+    private String BASE_URL = "http://192.168.199.1:3001";
 
     //id로 연결해 줄 것들
     private EditText logEmail;
@@ -65,12 +64,8 @@ public class LoginActivity extends AppCompatActivity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //일단 버튼 누르면 메인으로
-                Intent intent= new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
                 //로그인 핸들러 호출
                 handleLogin();
-                
             }
         });
         //비밀번호 찾기
@@ -110,7 +105,7 @@ public class LoginActivity extends AppCompatActivity{
                 if(response.code() == 201){
                     LoginResult result = response.body();
 
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
+//                    AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
 
                     intent_email = result.getEmail();
                     intent_password = result.getPassword();
@@ -121,11 +116,15 @@ public class LoginActivity extends AppCompatActivity{
 //                    intent_name = notsplitname[0];
 
 //                    builder1.setTitle(intent_name);
-                    builder1.setMessage(intent_email);
-                    builder1.setMessage(intent_password);
-                    builder1.setMessage(intent_userid);
-                    builder1.setMessage(intent_name);
-                    builder1.show();
+//                    builder1.setMessage(intent_email);
+//                    builder1.setMessage(intent_password);
+//                    builder1.setMessage(intent_userid);
+//                    builder1.setMessage(intent_name);
+//                    builder1.show();
+
+                    //로그인 성공 시 메인으로
+                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
 
                 }
                 else if(response.code() == 404){

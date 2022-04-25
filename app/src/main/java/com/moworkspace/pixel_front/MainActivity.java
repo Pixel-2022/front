@@ -2,22 +2,26 @@ package com.moworkspace.pixel_front;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.conscrypt.Conscrypt;
 
 import java.security.Security;
 
@@ -27,11 +31,25 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     String tag1, tag2, tag3;
 
+    //권한
+    private final int MY_PERMISSIONS_REQUEST_CAMERA=1001;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Security.insertProviderAt(Conscrypt.newProvider(), 1);
         setContentView(R.layout.activity_main);
+
+        int permssionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (permssionCheck!= PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "권한 승인이 필요합니다", Toast.LENGTH_LONG).show();
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                Toast.makeText(this, "거절 시 휴대폰 내의 설정을 바꿔 주세요.", Toast.LENGTH_LONG).show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        }
+
+
 
         Intent intent= getIntent();
 
@@ -149,4 +167,5 @@ public class MainActivity extends AppCompatActivity {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
 }

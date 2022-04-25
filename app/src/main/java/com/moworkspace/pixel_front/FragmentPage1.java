@@ -1,12 +1,14 @@
 package com.moworkspace.pixel_front;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +18,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class FragmentPage1 extends Fragment {
-    private LinearLayoutManager LinearLayoutManager;
     private View v;
     private String checked;
+
+    //권한
+    private final int MY_PERMISSIONS_REQUEST_CAMERA=1001;
+    Context ct;
 
     FragmentManager manager;
     FragmentTransaction fragmentTransaction;
@@ -55,6 +60,8 @@ public class FragmentPage1 extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+
 
         checked = "frag1_hand";
         if(checked == "frag1_hand"){
