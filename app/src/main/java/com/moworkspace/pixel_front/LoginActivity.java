@@ -1,8 +1,11 @@
 package com.moworkspace.pixel_front;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +28,8 @@ public class LoginActivity extends AppCompatActivity{
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
-    private String BASE_URL = "http://192.168.35.105:3000";
+    //신나:private String BASE_URL = "http://192.168.199.1:3001";
+    private String BASE_URL = "http://192.168.199.1:3001";
 
     //id로 연결해 줄 것들
     private EditText logEmail;
@@ -63,6 +67,7 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intent= new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 //로그인 핸들러 호출
+                handleLogin();
                 
             }
         });
@@ -100,7 +105,7 @@ public class LoginActivity extends AppCompatActivity{
         call.enqueue(new Callback<LoginResult>(){
             @Override
             public void onResponse(Call<LoginResult> call, Response<LoginResult> response){
-                if(response.code() == 200){
+                if(response.code() == 201){
                     LoginResult result = response.body();
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
@@ -127,5 +132,22 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
         
+    }
+    //키보드 내리기
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        hideKeyboard();
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
