@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private String BASE_URL="http://192.168.0.5:3001";
+    private String BASE_URL="http://192.168.199.1:3001";
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private EditText name;
@@ -39,6 +40,10 @@ public class JoinActivity extends AppCompatActivity {
     private EditText passCheck;
     private Button emailAuthentication;
     public String EmailCode = " ";
+
+    private LinearLayout email_check_Li;
+    private Button email_check_button;
+    private EditText email_check;
 
     private Button signupBtn;
     TextView emailName;
@@ -60,61 +65,66 @@ public class JoinActivity extends AppCompatActivity {
         pass=findViewById(R.id.pwd);
         passCheck=findViewById(R.id.pwd2);
 
+        email_check_Li=findViewById(R.id.email_check_Li);
+        email_check_button=findViewById(R.id.email_check_button);
+        email_check=findViewById(R.id.email_check);
+
         emailAuthentication=findViewById(R.id.EmailAuthorizeBtn);
         emailAuthentication.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                checkEmail_dialog(view);
+                email_check_Li.setVisibility(view.VISIBLE);
+                // 인증메일 보내기
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString());
+
+
+//                Call<CheckResult> call = retrofitInterface.executeCheck(map);
+                Call<com.moworkspace.pixel_front.CheckResult> call=retrofitInterface.executeCheck(map);
+                call.enqueue(new Callback<com.moworkspace.pixel_front.CheckResult>() {
+                    @Override
+                    public void onResponse(Call<com.moworkspace.pixel_front.CheckResult> call, Response<com.moworkspace.pixel_front.CheckResult> response) {
+                        if (true) {
+                        //if (response.code() == 200) {
+                            com.moworkspace.pixel_front.CheckResult result = response.body();
+
+                            email_check_button.setOnClickListener(new View.OnClickListener(){
+                                public void onClick(View view){
+                                    if((result.getChecking()).equals(email_check.getText().toString())) {
+                                        Toast.makeText(JoinActivity.this, "인증이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                                        email_check_button.setText("인증 완료");
+                                    }
+                                    else{
+                                        Toast.makeText(JoinActivity.this, "인증번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+                                    }
+
+                                }
+                            });
+                        }
+                        else if(response.code() == 404){
+                            Toast.makeText(JoinActivity.this, "404 오류", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<com.moworkspace.pixel_front.CheckResult> call, Throwable t) {
+                        Toast.makeText(JoinActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                });
             }
         });
-//        //이메일 인증 요청  ***이메일 확인 다이얼로그 필요
-//        check=findViewById(R.id.EmailAuthorizeBtn);
-//        check.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // 인증메일 보내기
-//                email_string = email.getText().toString();
-//                HashMap<String, String> map = new HashMap<>();
-//                map.put("email", email_string);
-//
-//
-//                Call<CheckResult> call = retrofitInterface.executeCheck(map);
-//
-//
-//                call.enqueue(new Callback<CheckResult>() {
-//                    @Override
-//                    public void onResponse(Call<CheckResult> call, Response<CheckResult> response) {
-//                        if (response.code() == 200) {
-//                            CheckResult result = response.body();
-//
-//                            email_check_Button.setOnClickListener(new View.OnClickListener(){
-//                                public void onClick(View view){
-//                                    if((result.getChecking()).equals(email_check.getText().toString())) {
-//                                        Toast.makeText(JoinActivity.this, "인증이 완료되었습니다.", Toast.LENGTH_LONG).show();
-//                                        email_check_Button.setText("인증 완료");
-//                                    }
-//                                    else{
-//                                        Toast.makeText(JoinActivity.this, "인증번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
-//                                    }
-//
-//                                }
-//                            });
-//                        }
-//                        else if(response.code() == 404){
-//                            Toast.makeText(JoinActivity.this, "404 오류", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<CheckResult> call, Throwable t) {
-//                        Toast.makeText(JoinActivity.this, t.getMessage(),
-//                                Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//
-//
-//            }
-//        });
+        //이메일 인증 요청  ***이메일 확인 다이얼로그 필요
+        check=findViewById(R.id.EmailAuthorizeBtn);
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
 
         //회원가입 버튼
         signupBtn = findViewById(R.id.signupBtn);
@@ -185,28 +195,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
-    public void checkEmail_dialog(View v){
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_checkemail,null);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        builder.setView(dialogView);
-
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
-        EditText a = (EditText)dialogView.findViewById(R.id.userEmailCode);
-
-        ok_btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                EmailCode = (String)a.getText().toString();
-//                Log.d("tag",EmailCode);
-                alertDialog.dismiss();
-            }
-        });
-    }
     //키보드 내리기
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

@@ -67,6 +67,38 @@
                 android:backgroundTint="#9AB2CE"
                 android:text="인증" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/email_check_Li"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/email_check"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="인증번호"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:background="@drawable/edit_round"
+                android:textColor="#6D929B"
+                android:layout_weight="9"
+                android:paddingLeft="20dp"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/email_check_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#9AB2CE"
+                android:text="확인하기"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/pwd"
