@@ -3,8 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Pixel/front/app/src/main/res/layout/login.xml" value="0.1" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/dialog_checkemail.xml" value="0.15625" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/dialog_delete.xml" value="0.2984375" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/dialog_joinin.xml" value="0.1296875" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/dialog_wordadd.xml" value="0.1400709219858156" />
