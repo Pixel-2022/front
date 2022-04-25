@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private String BASE_URL="aa";
+    private String BASE_URL="http://192.168.0.5:3001";
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private EditText name;
@@ -36,10 +37,11 @@ public class JoinActivity extends AppCompatActivity {
     private Button check;
     private EditText pass;
     private EditText passCheck;
-
-    private String email_string;
+    private Button emailAuthentication;
+    public String EmailCode;
 
     private Button signupBtn;
+    TextView emailName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +60,13 @@ public class JoinActivity extends AppCompatActivity {
         pass=findViewById(R.id.pwd);
         passCheck=findViewById(R.id.pwd2);
 
+        emailAuthentication=findViewById(R.id.EmailAuthorizeBtn);
+        emailAuthentication.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                checkEmail_dialog(view);
+            }
+        });
 //        //이메일 인증 요청  ***이메일 확인 다이얼로그 필요
 //        check=findViewById(R.id.EmailAuthorizeBtn);
 //        check.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +184,28 @@ public class JoinActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public String checkEmail_dialog(View v){
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_checkemail,null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
+        EditText a = (EditText)dialogView.findViewById(R.id.userEmailCode);
+
+        EmailCode = (String)a.getText().toString();
+        ok_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                alertDialog.dismiss();
+            }
+        });
+        return a.getText().toString();
     }
     //키보드 내리기
     @Override
