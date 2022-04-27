@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     String tag1, tag2, tag3;
+    private long backKeyPressedTime = 0;
 
     public static String p_email;
     public static String p_password;
@@ -149,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         clearBackStack();
         fragmentTransaction.setPrimaryNavigationFragment(fragment);
         fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.addToBackStack(null);//뒤로가기 눌렀을 떄 이전 프래그먼트로 이동가능
         fragmentTransaction.commitAllowingStateLoss();
     }
 
@@ -177,6 +179,25 @@ public class MainActivity extends AppCompatActivity {
             view = new View(this);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    //두번 눌러 종료
+    @Override
+    public void onBackPressed(){
+
+        Toast t = Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+                backKeyPressedTime = System.currentTimeMillis();
+                t.show();
+            } else {
+                t.cancel();
+                finish();
+            }
+        } else {
+            super.onBackPressed();
+        }
+
     }
 
 }
