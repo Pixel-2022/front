@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,10 +45,27 @@ public class Fragment_WordDict extends Fragment {
         dataList.add(new Dict(names[3], images[3]));
 
 
-
         LinearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(LinearLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        SearchView searchView = (SearchView) v.findViewById(R.id.searchView);
+        searchView.setIconifiedByDefault(false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String a_query) {
+                // to do
+                searchView.clearFocus();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String a_newText) {
+                // to do
+                return false;
+            }
+        });
 
         return v;
     }
