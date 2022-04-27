@@ -82,16 +82,17 @@ public class JoinActivity extends AppCompatActivity {
                 call.enqueue(new Callback<com.moworkspace.pixel_front.CheckResult>() {
                     @Override
                     public void onResponse(Call<com.moworkspace.pixel_front.CheckResult> call, Response<com.moworkspace.pixel_front.CheckResult> response) {
-                        if (true) {
-                        //if (response.code() == 200) {
+//                        if (true) {
+                        if (response.code() == 200) {
                             com.moworkspace.pixel_front.CheckResult result = response.body();
 
                             email_check_button.setOnClickListener(new View.OnClickListener(){
                                 public void onClick(View view){
-                                    if(true){
-                                    //if((result.getChecking()).equals(email_check.getText().toString())) {
+//                                    if(true){
+                                    if((result.getChecking()).equals(email_check.getText().toString())) {
                                         Toast.makeText(JoinActivity.this, "인증이 완료되었습니다.", Toast.LENGTH_LONG).show();
                                         email_check_button.setText("인증 완료");
+                                        email_check_button.setEnabled(false);
                                     }
                                     else{
                                         Toast.makeText(JoinActivity.this, "인증번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
