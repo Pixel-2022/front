@@ -1,5 +1,7 @@
 package com.moworkspace.pixel_front;
 
+import static com.moworkspace.pixel_front.MainActivity.p_name;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,7 +47,7 @@ public class LoginActivity extends AppCompatActivity{
     private String intent_email;
     private String intent_password;
     private String intent_name;
-    private int intent_userid;
+    private int intent_userID;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class LoginActivity extends AppCompatActivity{
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
-
+        System.out.println("결과 : "+p_name);
         //로그인 버튼 선택 시
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,25 +111,22 @@ public class LoginActivity extends AppCompatActivity{
                 if(response.code() == 201){
                     LoginResult result = response.body();
 
-//                    AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
-
                     intent_email = result.getEmail();
                     intent_password = result.getPassword();
-                    intent_userid = result.getUserID();
+                    intent_userID = result.getUserID();
                     intent_name = result.getName();
-
-//                    String[] notsplitname = result.getName().split("_");
-//                    intent_name = notsplitname[0];
-
-//                    builder1.setTitle(intent_name);
-//                    builder1.setMessage(intent_email);
-//                    builder1.setMessage(intent_password);
-//                    builder1.setMessage(intent_userid);
-//                    builder1.setMessage(intent_name);
-//                    builder1.show();
 
                     //로그인 성공 시 메인으로
                     Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("email",intent_email);
+                    bundle.putString("password", intent_password);
+                    bundle.putString("name",intent_name);
+                    bundle.putInt("UserID",intent_userID);
+                    intent.putExtras(bundle);
+
                     startActivity(intent);
 
                 }
