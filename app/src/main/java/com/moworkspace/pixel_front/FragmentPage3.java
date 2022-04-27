@@ -37,6 +37,8 @@ public class FragmentPage3 extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //intent_변수들 빈 값으로 만들기
+
                 Intent intent=new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
             }
