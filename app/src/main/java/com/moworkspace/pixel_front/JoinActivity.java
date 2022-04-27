@@ -39,6 +39,7 @@ public class JoinActivity extends AppCompatActivity {
     private EditText pass;
     private EditText passCheck;
     private Button emailAuthentication;
+    private Button EmailAuthorizeBtn;
     public String EmailCode = " ";
 
     private LinearLayout email_check_Li;
@@ -66,6 +67,7 @@ public class JoinActivity extends AppCompatActivity {
 
         email_check_Li=findViewById(R.id.email_check_Li);
         email_check_button=findViewById(R.id.email_check_button);
+        EmailAuthorizeBtn = findViewById(R.id.EmailAuthorizeBtn);
         email_check=findViewById(R.id.email_check);
 
         emailAuthentication=findViewById(R.id.EmailAuthorizeBtn);
@@ -77,22 +79,20 @@ public class JoinActivity extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("email", email.getText().toString());
 
-//                Call<CheckResult> call = retrofitInterface.executeCheck(map);
                 Call<com.moworkspace.pixel_front.CheckResult> call=retrofitInterface.executeCheck(map);
                 call.enqueue(new Callback<com.moworkspace.pixel_front.CheckResult>() {
                     @Override
                     public void onResponse(Call<com.moworkspace.pixel_front.CheckResult> call, Response<com.moworkspace.pixel_front.CheckResult> response) {
-//                        if (true) {
                         if (response.code() == 200) {
                             com.moworkspace.pixel_front.CheckResult result = response.body();
 
                             email_check_button.setOnClickListener(new View.OnClickListener(){
                                 public void onClick(View view){
-//                                    if(true){
                                     if((result.getChecking()).equals(email_check.getText().toString())) {
                                         Toast.makeText(JoinActivity.this, "인증이 완료되었습니다.", Toast.LENGTH_LONG).show();
                                         email_check_button.setText("인증 완료");
                                         email_check_button.setEnabled(false);
+                                        EmailAuthorizeBtn.setEnabled(false);
                                     }
                                     else{
                                         Toast.makeText(JoinActivity.this, "인증번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
@@ -130,18 +130,16 @@ public class JoinActivity extends AppCompatActivity {
                     map.put("email", email.getText().toString());
                     String part[] = email.getText().toString().split("@");
                     map.put("password", pass.getText().toString());
-                    custom_dialog(view);
 
                     Call<Void> call = retrofitInterface.executeSignup(map);
-                    if(true){ //이메일 완료인지 봐야함
+                    if(email_check_button.getText().equals("인증 완료")){ //이메일 완료인지 봐야함
                         call.enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 if (response.code() == 200) {
                                     Toast.makeText(JoinActivity.this,
                                             "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                    startActivity(intent);
+                                    custom_dialog(view);
 
                                 } else if (response.code() == 400) {
                                     Toast.makeText(JoinActivity.this, "이미 가입된 정보입니다.",
