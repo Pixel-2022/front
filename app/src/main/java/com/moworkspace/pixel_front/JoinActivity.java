@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private String BASE_URL="http://192.168.199.1:3001";
+    private String BASE_URL=LoginActivity.getBASE_URL();
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private EditText name;
@@ -52,7 +52,6 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.joinin);
-
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -77,7 +76,6 @@ public class JoinActivity extends AppCompatActivity {
                 // 인증메일 보내기
                 HashMap<String, String> map = new HashMap<>();
                 map.put("email", email.getText().toString());
-
 
 //                Call<CheckResult> call = retrofitInterface.executeCheck(map);
                 Call<com.moworkspace.pixel_front.CheckResult> call=retrofitInterface.executeCheck(map);
