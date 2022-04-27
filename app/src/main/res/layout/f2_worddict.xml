@@ -11,7 +11,8 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_white"/>
+        android:background="@drawable/round_white"
+        android:focusable="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
