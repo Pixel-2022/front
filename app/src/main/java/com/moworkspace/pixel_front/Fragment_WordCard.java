@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +44,25 @@ public class Fragment_WordCard extends Fragment {
         dataList.add(new Data(titles[2],videos[2],images[2]));
 
         recyclerView.setAdapter(adapter);
+
+
+        SearchView searchView = (SearchView) v.findViewById(R.id.searchView);
+        searchView.setIconifiedByDefault(false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String a_query) {
+                // to do
+                searchView.clearFocus();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String a_newText) {
+                // to do
+                return false;
+            }
+        });
 
         return v;
     }
