@@ -3,26 +3,29 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/stuff_upload"
+        android:id="@+id/stuffCap"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="7dp"
         android:backgroundTint="#F5FAFA"
-        android:text="이미지 업로드"
+        android:text="사진찍기"
         android:textColor="#6D929B"
-        android:textSize="15dp" />
-    <View
-        android:id="@+id/stuff_frame"
-        android:layout_gravity="center"
+        android:textSize="15dp"
+        />
+    <ImageView
         android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:background="#C6DAD6"/>
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:id="@+id/img_pre"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
+
         <Button
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
