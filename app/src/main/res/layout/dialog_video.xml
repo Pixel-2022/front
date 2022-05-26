@@ -14,6 +14,7 @@
         android:background="@drawable/dialog_d_yes"
         />
     <VideoView
+        android:id="@+id/videoV"
         android:layout_width="250dp"
         android:layout_height="300dp"
         android:layout_gravity="center"

@@ -5,12 +5,17 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -117,14 +122,29 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
     }
 
     public void custom_dialog2(View v){
+        VideoView vv;
         View dialogView = inflater.inflate(R.layout.dialog_video,null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         builder.setView(dialogView);
 
+        vv= dialogView.findViewById(R.id.videoV);
+        //URL서ㅕㄹ정
+        Uri videoUri= Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
+        vv.setMediaController(new MediaController(context));
+        vv.setVideoURI(videoUri);
+
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                //비디오 시작
+                vv.start();
+            }
+        });
 
         TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener(){
