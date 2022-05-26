@@ -24,6 +24,12 @@
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/wordcard_item.xml" value="0.33" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/wordcard_page.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/DS/AndroidStudioProjects/front/app/src/main/res/layout/worddict_page.xml" value="0.13645833333333332" />
+        <entry key="..\:/front/front/app/src/main/res/layout/chat_item_user.xml" value="0.1875" />
+        <entry key="..\:/front/front/app/src/main/res/layout/dialog_delete.xml" value="0.1875" />
+        <entry key="..\:/front/front/app/src/main/res/layout/dialog_joinin.xml" value="0.1875" />
+        <entry key="..\:/front/front/app/src/main/res/layout/dialog_video.xml" value="0.18645833333333334" />
+        <entry key="..\:/front/front/app/src/main/res/layout/f2_worddict.xml" value="0.1875" />
+        <entry key="..\:/front/front/app/src/main/res/layout/item_word.xml" value="0.1875" />
       </map>
     </option>
   </component>

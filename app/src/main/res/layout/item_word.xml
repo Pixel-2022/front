@@ -36,6 +36,7 @@
                 android:layout_height="50dp"
                 android:src="@drawable/dict_save"/>
             <ImageView
+                android:id="@+id/show_video"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

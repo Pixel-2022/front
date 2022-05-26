@@ -61,6 +61,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
         TextView textView;
         ImageView imageView;
         ImageView save;
+        ImageView showVideo;
 
 
         public ViewHolder(@NonNull View itemView){
@@ -68,11 +69,19 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
             imageView = itemView.findViewById(R.id.dict_image);
             textView = itemView.findViewById(R.id.dict_name);
             save=itemView.findViewById(R.id.save_word);
+            showVideo=itemView.findViewById(R.id.show_video);
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     custom_dialog(view);
+                }
+            });
+
+            showVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    custom_dialog2(view);
                 }
             });
 
@@ -90,6 +99,25 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
 
     public void custom_dialog(View v){
         View dialogView = inflater.inflate(R.layout.dialog_wordadd,null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView ok_btn = dialogView.findViewById(R.id.ok_btn);
+        ok_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    public void custom_dialog2(View v){
+        View dialogView = inflater.inflate(R.layout.dialog_video,null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         builder.setView(dialogView);
