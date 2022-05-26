@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity{
     // 임의의 BASE_URL 추가해둔 상태. 추후 수정해야 함
     //신나:public String BASE_URL = "http://192.168.199.1:3001";
     //무지:private String BASE_URL = "http://192.168.0.5:3001";
-    public static String BASE_URL = "http://192.168.199.1:3001";
+    public static String BASE_URL = "http://192.168.0.5:3001/";
 
     public static String getBASE_URL(){
         return BASE_URL;

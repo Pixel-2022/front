@@ -1,10 +1,14 @@
 package com.moworkspace.pixel_front;
 
 
+import com.google.gson.JsonElement;
+import com.squareup.okhttp.ResponseBody;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
@@ -17,4 +21,6 @@ public interface RetrofitInterface {
     @POST("/user/check") //이메일 보내기 (인증번호용)
     Call<CheckResult> executeCheck (@Body HashMap<String, String> map);
 
+    @GET("/dict/dictAll")
+    Call<JsonElement> getDictAll();
 }

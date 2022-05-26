@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 
@@ -42,8 +46,10 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Dict dict1=dict.get(position);
-        holder.imageView.setImageResource(dict1.getImage());
-        holder.textView.setText(dict1.getSub());
+//        Log.e("받았나요?",dict1.getImage());
+//        holder.imageView.setImageResource(dict1.getImage());
+        holder.textView.setText(dict1.getWord());
+        Glide.with(holder.imageView.getContext()).load(dict1.getImage()).into(holder.imageView);
     }
 
 
