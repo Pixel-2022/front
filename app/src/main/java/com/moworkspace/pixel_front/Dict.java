@@ -5,16 +5,16 @@ import android.media.Image;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Dict extends AppCompatActivity {
-    String sub;
-    int image;
+    String Word;
+    String image;
 
-    public String getSub(){return sub;}
-    public void setSub(String s){sub=s;}
-    public int getImage(){return image;}
-    public void setImage(int im){image=im;}
+    public String getWord(){return Word;}
+    public void setWord(String s){Word = s;}
+    public String getImage(){return image;}
+    public void setImage(String im){image=im;}
 
-    public Dict(String sub, int image){
-        this.sub=sub;
+    public Dict(String Word, String image){
+        this.Word=Word;
         this.image=image;
     }
 }
