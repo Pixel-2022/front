@@ -42,6 +42,7 @@ public class Fragment_WordDict extends Fragment {
 
     String[] names;
     String[] images;
+    String[] videoURLs;
 //    DictAdapter adapter;
 
     private String BASE_URL=LoginActivity.getBASE_URL();
@@ -92,6 +93,7 @@ public class Fragment_WordDict extends Fragment {
                 //배열 선언
                 names = new String[DictResponseArray.size()];
                 images = new String[DictResponseArray.size()];
+                videoURLs = new String[DictResponseArray.size()];
                 for (int i=0; i<DictResponseArray.size();i++){
                     JsonElement jsonElement = DictResponseArray.get(i);
                     String name = jsonElement.getAsJsonObject().get("Word").getAsString();
@@ -99,7 +101,8 @@ public class Fragment_WordDict extends Fragment {
                     String wordImg = jsonElement.getAsJsonObject().get("wordImg").getAsString();
                     names[i]=name;
                     images[i]=wordImg;
-                    dataList.add(new Dict(names[i], images[i]));
+                    videoURLs[i] = videoURL;
+                    dataList.add(new Dict(names[i], images[i], videoURLs[i]));
                 }
                 Log.e("dataList : ",dataList.get(0).getWord());
                 DictAdapter adapter=new DictAdapter(context, dataList);

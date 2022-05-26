@@ -53,6 +53,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
         Dict dict1=dict.get(position);
 //        Log.e("받았나요?",dict1.getImage());
 //        holder.imageView.setImageResource(dict1.getImage());
+
         holder.textView.setText(dict1.getWord());
         Glide.with(holder.imageView.getContext()).load(dict1.getImage()).into(holder.imageView);
     }
@@ -67,7 +68,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
         ImageView imageView;
         ImageView save;
         ImageView showVideo;
-
+        ImageView dictAct;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -75,6 +76,13 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
             textView = itemView.findViewById(R.id.dict_name);
             save=itemView.findViewById(R.id.save_word);
             showVideo=itemView.findViewById(R.id.show_video);
+            dictAct = itemView.findViewById(R.id.dict_act);
+            dictAct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("아이템 클릭", String.valueOf(getAdapterPosition()));
+                }
+            });
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,7 +94,9 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
             showVideo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    custom_dialog2(view);
+                    custom_dialog2(view,getAdapterPosition());
+                    Log.d("비디오에서도 position이 나오나요?", String.valueOf(getAdapterPosition()));
+
                 }
             });
 
@@ -121,7 +131,8 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
         });
     }
 
-    public void custom_dialog2(View v){
+    public void custom_dialog2(View v,int position){
+        Dict dict2=dict.get(position);
         VideoView vv;
         View dialogView = inflater.inflate(R.layout.dialog_video,null);
 
@@ -130,7 +141,7 @@ public class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
 
         vv= dialogView.findViewById(R.id.videoV);
         //URL서ㅕㄹ정
-        Uri videoUri= Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
+        Uri videoUri= Uri.parse(dict2.getVideoURL());
         vv.setMediaController(new MediaController(context));
         vv.setVideoURI(videoUri);
 
